@@ -1,0 +1,23 @@
+@import "../../assets/colors/colors.css";
+@import "../../assets/fonts/fonts.css";
+
+.nav-bar {
+  text-align: center;
+  padding: 10px;
+  background-color: var(--nearly-white);
+  z-index: 99;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-left: 0;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--dark-brown);
+  text-transform: uppercase;
+}

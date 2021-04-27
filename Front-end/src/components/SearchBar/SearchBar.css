@@ -1,0 +1,25 @@
+@import "../../assets/colors/colors.css";
+@import "../../assets/fonts/fonts.css";
+
+input {
+  color: var(--primary);
+  background-color: var(--nearly-white);
+  width: 30%;
+  height: 25px;
+  margin: 10px auto;
+  border-radius: 20px;
+  padding: 5px 20px;
+  border: 2px solid var(--primary);
+  transition: 0.3s;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:hover {
+  border: none;
+  border-radius: 0;
+  background-color: var(--nearly-white);
+  border-bottom: 2px solid var(--primary);
+}

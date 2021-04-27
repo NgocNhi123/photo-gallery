@@ -1,0 +1,10 @@
+.sidebarIcon {
+  transition-duration: 0.5s;
+}
+
+.sidebarIcon:hover {
+  color: #734b19;
+  background-color: #bfb6ae;
+  border-radius: 50%;
+  padding: 10%;
+}

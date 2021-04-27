@@ -1,0 +1,25 @@
+@import url("../../assets/colors/colors.css");
+
+.add-image-bar {
+  display: flex;
+  flex-direction: row;
+  margin-top: 120px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  background: var(--nearly-white);
+}
+
+.add-image-bar > div {
+  border: 1px solid var(--primary);
+  background: var(--dark-brown);
+  color: var(--nearly-white);
+  padding: 1px 10px 5px 10px;
+  border-radius: 50px;
+  transition: 0.2s ease;
+}
+
+.add-image-bar > div:hover {
+  cursor: pointer;
+  background-color: var(--light-brown);
+}

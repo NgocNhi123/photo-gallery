@@ -1,0 +1,10 @@
+@import "../../assets/colors/colors.css";
+@import "../../assets/fonts/fonts.css";
+
+.side-bar {
+  background-color: var(--light-brown);
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
