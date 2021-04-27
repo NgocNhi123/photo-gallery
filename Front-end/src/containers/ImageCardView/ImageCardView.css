@@ -1,67 +1,54 @@
 @import "../../assets/colors/colors.css";
 @import "../../assets/fonts/fonts.css";
 
-.image-card {
+.image-card-view {
   background-color: white;
-  padding: 10px;
+  padding: 10px 20px;
   flex: 0 1 22%;
-  /* margin: 1%; */
-  margin-left: 1%;
   margin-bottom: 2%;
   border-radius: 2%;
   box-shadow: 0px 3px 14px rgba(0, 0, 29, 0.12);
-  /* transition: 0.2s ease; */
+  width: 40rem;
+  height: 40rem;
 }
 
-@media all and (max-width: 1100px) {
-  .image-card {
-    flex: 0 1 28%;
-  }
-}
-
-@media all and (max-width: 750px) {
-  .image-card {
-    flex: 0 1 40%;
-  }
-}
-
-@media all and (max-width: 450px) {
-  .image-card {
-    flex: 0 1 90%;
-  }
-}
-
-.image-card:hover {
+.image-card-view:hover {
   cursor: pointer;
 }
 
-.resize {
-  width: 100%;
-  height: 11.5rem;
+.resize-card {
+  width: 40rem;
+  height: 30rem;
   object-fit: cover;
 }
 
-.card-body {
+.card-view-body {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: row;
 }
 
-.heart-icon {
+.heartIcon {
   color: var(--grey-brown);
   background: white;
   margin: 0;
   padding: 0;
   font-size: 200%;
+  margin-left: auto;
 }
 
-.heart-icon:hover {
+.heartIcon:hover {
   font-size: 200%;
   cursor: pointer;
   color: var(--dark-brown);
 }
 
-.isFavo {
+.isFavorite {
   color: var(--dark-brown);
+}
+
+.close-button {
+  text-align: end;
+  font-weight: 3px;
+  font-size: 20px;
 }

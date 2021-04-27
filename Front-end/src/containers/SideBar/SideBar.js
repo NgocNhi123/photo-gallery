@@ -7,7 +7,6 @@ const SideBar = ({ onClick }) => {
     <div className="side-bar">
       <IconButtons type="user" onClick={onClick} />
       <IconButtons type="home" onClick={onClick} />
-      <IconButtons type="album" onClick={onClick} />
       <IconButtons type="favorite" onClick={onClick} />
     </div>
   );

@@ -5,6 +5,7 @@
   height: 100vh;
   display: flex;
   overflow: auto;
+  background: var(--nearly-white);
 }
 
 .side-bar {
@@ -13,4 +14,15 @@
   top: 0;
   align-self: flex-start;
   height: 100%;
+}
+
+.pop-up {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
