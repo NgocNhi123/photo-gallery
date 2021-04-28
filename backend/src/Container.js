@@ -19,6 +19,9 @@ const registerService = require("./service/user-management/register.service");
 const deleteService = require("./service/image-management/delete.service");
 const getAllService = require("./service/image-management/getAll.service");
 const setFavoriteService = require("./service/image-management/setFavorite.service");
+// ulti
+const authentication = require("./ulti/authentication");
+const passwordHasher = require("./ulti/passwordHasher");
 
 const Container = awilix.createContainer();
 
@@ -43,6 +46,9 @@ Container.register({
   deleteService: awilix.asClass(deleteService),
   getAllService: awilix.asClass(getAllService),
   setFavoriteService: awilix.asClass(setFavoriteService),
+  // ulti
+  authentication: awilix.asClass(authentication),
+  passwordHasher: awilix.asClass(passwordHasher),
 });
 
 module.exports = Container;

@@ -1,6 +1,7 @@
 class LoginService {
   constructor({ userDaos, authentication }) {
     this.userDaos = userDaos;
+    this.authentication = authentication;
   }
 
   async execute(email, password) {
@@ -11,14 +12,10 @@ class LoginService {
     ) {
       const stringUser = JSON.stringify(user);
       return {
-        valid: true,
         token: this.authentication.sign(stringUser),
-        userId: user.id,
-        ava: user.ava,
-        type: user.type,
       };
     }
-    return { valid: false, curUser: {} };
+    return null;
   }
 }
 

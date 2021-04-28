@@ -5,8 +5,8 @@ class UserDaos {
     this.userModel = userModel;
   }
 
-  async findByUsername(name) {
-    const user = await this.userModel.findOne({ name });
+  async findByUsername(username) {
+    const user = await this.userModel.findOne({ username });
     if (user) return user;
     return null;
   }
@@ -21,6 +21,20 @@ class UserDaos {
     const user = await this.userModel.findById({ _id: id });
     if (user) return user;
     return null;
+  }
+
+  async createNewUser(username, email, password) {
+    try {
+      const newUser = await this.userModel.create({
+        username,
+        email,
+        password,
+      });
+      return newUser;
+    } catch (err) {
+      console.log(err.message);
+      return null;
+    }
   }
 }
 

@@ -3,7 +3,10 @@ class GetAllService {
     this.imageDaos = imageDaos;
   }
 
-  async execute() {}
+  async execute() {
+    const images = this.imageDaos.getAll();
+    return { images };
+  }
 }
 
 module.exports = GetAllService;
