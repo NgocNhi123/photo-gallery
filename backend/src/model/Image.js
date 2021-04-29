@@ -15,6 +15,7 @@ const ImageSchema = mongoose.Schema({
   },
   deletedAt: {
     type: String,
+    default: null,
   },
   caption: {
     type: String,

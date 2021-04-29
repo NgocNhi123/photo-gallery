@@ -3,7 +3,10 @@ class GetAllFavoriteService {
     this.imageDaos = imageDaos;
   }
 
-  async execute() {}
+  async execute() {
+    const images = this.imageDaos.getAllFavorite({ deleteAt: null });
+    return { images };
+  }
 }
 
 module.exports = GetAllFavoriteService;

@@ -20,3 +20,5 @@ class PasswordHasher {
     }
   }
 }
+
+module.exports = PasswordHasher;
