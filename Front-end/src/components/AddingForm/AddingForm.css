@@ -1,0 +1,52 @@
+.adding-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.resize-card {
+  width: 40rem;
+  height: 30rem;
+  object-fit: cover;
+}
+
+#input[type="file"] {
+  display: none;
+}
+
+.image-upload {
+  margin-top: 10px;
+  border: 1px solid var(--primary);
+  background: var(--dark-brown);
+  color: var(--nearly-white);
+  padding: 1px 10px 5px 10px;
+  border-radius: 20px;
+  transition: 0.2s ease;
+}
+
+.image-upload:hover {
+  cursor: pointer;
+  background-color: var(--light-brown);
+}
+
+.input-description {
+  margin-top: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid var(--primary);
+}
+
+.input-description:focus {
+  outline: none;
+}
+
+.submit {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.submit:focus {
+  outline: none;
+}

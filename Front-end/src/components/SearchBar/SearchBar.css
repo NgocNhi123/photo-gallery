@@ -1,7 +1,7 @@
 @import "../../assets/colors/colors.css";
 @import "../../assets/fonts/fonts.css";
 
-input {
+.search-input {
   color: var(--primary);
   background-color: var(--nearly-white);
   width: 30%;
@@ -13,11 +13,11 @@ input {
   transition: 0.3s;
 }
 
-input:focus {
+.search-input:focus {
   outline: none;
 }
 
-input:hover {
+.search-input:hover {
   border: none;
   border-radius: 0;
   background-color: var(--nearly-white);
