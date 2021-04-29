@@ -14,11 +14,22 @@ class ImageDaos {
 
   async updateFavorite(id, payload) {
     try {
-      const updated = this.imageModel.updateOne(
-        { _id: id },
-        { isFavorite: payload }
-      );
-    } catch (err) {}
+      const updated = await this.imageModel.updateOne({ _id: id }, { isFavorite: payload });
+      return updated;
+    } catch (err) {
+      console.log(err.message);
+      return null;
+    }
+  }
+
+  async getAllFavorite() {
+    try {
+      const images = await this.imageModel.find({ isFavorite: true });
+      return images;
+    } catch (err) {
+      console.log(err.message);
+      return null;
+    }
   }
 }
 

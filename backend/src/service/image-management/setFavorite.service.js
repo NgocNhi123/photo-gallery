@@ -3,7 +3,10 @@ class SetFavoriteService {
     this.imageDaos = imageDaos;
   }
 
-  async execute() {}
+  async execute(id, payload) {
+    const updatedOne = this.imageDaos.updateFavorite(id, payload);
+    return updatedOne;
+  }
 }
 
 module.exports = SetFavoriteService;
