@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./AddingForm.css";
+import CustomButton from "../CustomButton/CustomButton";
 
 const AddingForm = () => {
   const [image, setImage] = useState(
@@ -35,9 +36,12 @@ const AddingForm = () => {
         id="input"
         onChange={imageHandler}
       />
-      <label htmlFor="input" className="image-upload">
-        Choose your image
+      <label htmlFor="input">
+        <CustomButton onClick={null} value={null}>
+          Choose your image
+        </CustomButton>
       </label>
+
       <textarea
         placeholder="Description"
         className="input-description"
@@ -45,9 +49,9 @@ const AddingForm = () => {
         maxLength="160"
         onChange={(e) => setDescription(e.target.value)}
       />
-      <button className="image-upload submit" onClick={onSubmit}>
+      <CustomButton onClick={onSubmit} value={null}>
         Submit
-      </button>
+      </CustomButton>
     </form>
   );
 };

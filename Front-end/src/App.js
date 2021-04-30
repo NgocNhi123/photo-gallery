@@ -8,8 +8,8 @@ function App() {
   const [isValid, setIsValid] = useState(false);
   return (
     <div className="container">
-      {/* {!isValid && <LoginPage onClick={setIsValid} />} */}
-      {!isValid && <CreateAccountPage onClick={setIsValid} />}
+      {!isValid && <LoginPage onClick={setIsValid} />}
+      {/* {!isValid && <CreateAccountPage onClick={setIsValid} />} */}
       {isValid && <MainPage />}
     </div>
   );

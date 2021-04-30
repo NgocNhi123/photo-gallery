@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
+import CustomButton from "../../components/CustomButton/CustomButton";
+import LoginCard from "../../containers/LoginCard/LoginCard";
+import InputBar from "../../components/InputBar/InputBar";
 
 const defaultAccount = { id: "123", password: "123" };
 
@@ -17,23 +20,18 @@ const LoginPage = ({ onClick }) => {
   }
 
   return (
-    <form action="" className="log-in">
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+    <LoginCard title="login">
+      <InputBar type="text" placeholder="Username" onChange={setUsername} />
+      <InputBar type="password" placeholder="Password" onChange={setPassword} />
       {!validation && <div>Invalid login</div>}
-      <button type="button" onClick={checkValidation}>
+      <CustomButton onClick={checkValidation} value={null}>
         Login
-      </button>
-      <button>Create an Account</button>
-    </form>
+      </CustomButton>
+      Or
+      <CustomButton onClick={null} value={null}>
+        Create an Account
+      </CustomButton>
+    </LoginCard>
   );
 };
 

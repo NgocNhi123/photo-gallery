@@ -15,21 +15,6 @@
   display: none;
 }
 
-.image-upload {
-  margin-top: 10px;
-  border: 1px solid var(--primary);
-  background: var(--dark-brown);
-  color: var(--nearly-white);
-  padding: 1px 10px 5px 10px;
-  border-radius: 20px;
-  transition: 0.2s ease;
-}
-
-.image-upload:hover {
-  cursor: pointer;
-  background-color: var(--light-brown);
-}
-
 .input-description {
   margin-top: 10px;
   width: 100%;
@@ -39,14 +24,5 @@
 }
 
 .input-description:focus {
-  outline: none;
-}
-
-.submit {
-  font-size: 14px;
-  padding: 5px 10px;
-}
-
-.submit:focus {
   outline: none;
 }

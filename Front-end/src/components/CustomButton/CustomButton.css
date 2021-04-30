@@ -1,0 +1,16 @@
+@import url("../../assets/colors/colors.css");
+
+.custom-button {
+  margin-top: 10px;
+  border: 1px solid var(--primary);
+  background: var(--dark-brown);
+  color: var(--nearly-white);
+  padding: 1px 10px 5px 10px;
+  border-radius: 50px;
+  transition: 0.2s ease;
+}
+
+.custom-button:hover {
+  cursor: pointer;
+  background-color: var(--light-brown);
+}
