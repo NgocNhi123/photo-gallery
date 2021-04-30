@@ -1,7 +1,10 @@
 const bcrypt = require("bcrypt");
 
 class PasswordHasher {
-  constructor() {}
+  constructor() {
+    this.isMatched = this.isMatched.bind(this);
+    this.hash = this.hash.bind(this);
+  }
 
   async isMatched(input, password) {
     const result = await bcrypt.compare(input, password);

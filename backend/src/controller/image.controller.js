@@ -1,16 +1,32 @@
+const multer = require("multer");
+
 class ImageController {
   constructor({
     deleteService,
     getAllService,
     setFavoriteService,
     getAllFavoriteService,
+    uploadService
   }) {
     this.deleteService = deleteService;
     this.getAllService = getAllService;
     this.setFavoriteService = setFavoriteService;
+    this.uploadService = uploadService;
   }
 
+
+
   async delete(req, res) {}
+
+  async upload(req, res) {
+    try {
+      const { file, description } = req.body;
+
+    } catch (err) {
+
+    }
+  }
+
   async getAll(req, res) {
     try {
       const result = this.getAllService.execute();
@@ -20,6 +36,7 @@ class ImageController {
       res.json({ valid: false, message: err.message });
     }
   }
+
   async setFavorite(req, res) {
     try {
       const { userId, favorite } = req.body;
@@ -30,6 +47,7 @@ class ImageController {
       res.json({ valid: true, message: err.message });
     }
   }
+
   async getAllFavorite(req, res) {
     try {
       const result = this.getAllFavoriteService.execute();

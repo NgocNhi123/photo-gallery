@@ -31,6 +31,31 @@ class ImageDaos {
       return null;
     }
   }
+
+  async create(filename, des, userId) {
+    try {
+      const newImg = await this.imageModel.create({
+        path: `/${filename}`,
+        userId: userId,
+        caption: des,
+      });
+      return newImg;
+    } catch (err) {
+      console.log(err.message);
+      return null;
+    }
+  }
+
+  async delete(imgId) {
+    try {
+      const img = this.imageModel.findOneAndDelete({ _id: imgId });
+      if (!img) throw new Error("not img found");
+      return img;
+    } catch (err) {
+      console.log(err.message);
+      return null;
+    }
+  }
 }
 
 module.exports = ImageDaos;
