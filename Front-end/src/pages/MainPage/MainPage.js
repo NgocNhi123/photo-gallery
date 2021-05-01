@@ -8,6 +8,7 @@ import AddImageBar from "../../containers/AddImageBar/AddImageBar";
 import ImageCardView from "../../containers/ImageCardView/ImageCardView";
 import CardViewContent from "../../components/CardViewContent/CardViewContent";
 import AddingForm from "../../components/AddingForm/AddingForm";
+import UserInfo from "../../containers/UserInfo/UserInfo";
 // import { GET, POST } from "../src/utils/Fetch";
 
 const MainPage = () => {
@@ -69,7 +70,10 @@ const MainPage = () => {
       <div style={{ width: "100%" }}>
         <Header />
         {isSelected === "user" && (
-          <AddImageBar title={"User Profile"} isProfile={true} />
+          <>
+            <AddImageBar title={"User Profile"} isProfile={true} />
+            <UserInfo></UserInfo>
+          </>
         )}
         {isSelected === "home" && (
           <AddImageBar title={"All Images"} onClick={setIsAddingImage} />

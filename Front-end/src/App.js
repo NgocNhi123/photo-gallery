@@ -1,16 +1,31 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import MainPage from "./pages/MainPage/MainPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import CreateAccountPage from "./pages/CreateAccountPage/CreateAccountPage";
 
 function App() {
-  const [isValid, setIsValid] = useState(false);
   return (
     <div className="container">
-      {!isValid && <LoginPage onClick={setIsValid} />}
-      {/* {!isValid && <CreateAccountPage onClick={setIsValid} />} */}
-      {isValid && <MainPage />}
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <MainPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/register">
+            <CreateAccountPage />
+          </Route>
+          <Router path="*">
+            <h2 style={{ color: "red", width: "100%", textAlign: "center" }}>
+              ERROR!!!
+            </h2>
+          </Router>
+        </Switch>
+      </Router>
     </div>
   );
 }

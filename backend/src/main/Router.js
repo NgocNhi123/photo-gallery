@@ -1,9 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const userRouter = require("../route/user.route.js");
-const imageRouter = require("../route/image.route.js");
 
-module.exports = ({}) => {
+module.exports = ({ userRouter, imageRouter }) => {
   const router = express.Router();
   router.use(express.static("public"));
   router.use(cors({ exposedHeaders: "auth-token" }));

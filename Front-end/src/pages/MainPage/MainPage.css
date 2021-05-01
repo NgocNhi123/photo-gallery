@@ -3,6 +3,7 @@
 
 .container {
   height: 100vh;
+  width: 100%;
   display: flex;
   overflow: auto;
   background: var(--nearly-white);

@@ -1,24 +1,33 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./CreateAccountPage.css";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import LoginCard from "../../containers/LoginCard/LoginCard";
 import InputBar from "../../components/InputBar/InputBar";
+import * as Fetch from "../../utils/Fetch";
+import * as Commons from "../../commons/commons";
 
-const data = { valid: false, message: "username" };
-
-const CreateAccountPage = ({ onClick }) => {
+const CreateAccountPage = () => {
+  const history = useHistory();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showMessage, setShowMessage] = useState(false);
+  const [showMessage, setShowMessage] = useState("");
 
-  function checkValidation() {
-    if (data.valid) onClick(true);
-    else setShowMessage(true);
+  async function checkValidation() {
+    let data = await Fetch.POST(
+      `${Commons.DOMAIN}${Commons.PORT}/auth/register`,
+      { username, email, password }
+    );
+    if (!data || !data.data || !data.data.valid) {
+      setShowMessage(data.data.message);
+    } else {
+      history.push("/");
+    }
   }
   return (
     <LoginCard title="create an account">
-      {showMessage && <div>{data.message}</div>}
+      {showMessage !== "" && <div>{showMessage}</div>}
       <InputBar type="text" placeholder="Username" onChange={setUsername} />
       <InputBar type="email" placeholder="Email" onChange={setUsername} />
       <InputBar type="password" placeholder="Password" onChange={setPassword} />

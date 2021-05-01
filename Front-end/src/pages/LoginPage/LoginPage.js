@@ -1,34 +1,45 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./LoginPage.css";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import LoginCard from "../../containers/LoginCard/LoginCard";
 import InputBar from "../../components/InputBar/InputBar";
+import * as Fetch from "../../utils/Fetch";
+import * as Commons from "../../commons/commons";
 
-const defaultAccount = { id: "123", password: "123" };
-
-const LoginPage = ({ onClick }) => {
-  const [username, setUsername] = useState("");
+const LoginPage = () => {
+  const history = useHistory();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [validation, setValidation] = useState(true);
 
-  function checkValidation() {
-    if (username === defaultAccount.id && password === defaultAccount.password)
-      onClick(true);
-    else {
+  async function checkValidation() {
+    let data = await Fetch.POST(`${Commons.DOMAIN}${Commons.PORT}/auth/login`, {
+      email,
+      password,
+    });
+    if (!data || !data.data || !data.data.valid) {
       setValidation(false);
+    } else {
+      history.push("/");
     }
   }
 
   return (
     <LoginCard title="login">
-      <InputBar type="text" placeholder="Username" onChange={setUsername} />
+      <InputBar type="email" placeholder="Email" onChange={setEmail} />
       <InputBar type="password" placeholder="Password" onChange={setPassword} />
       {!validation && <div>Invalid login</div>}
       <CustomButton onClick={checkValidation} value={null}>
         Login
       </CustomButton>
       Or
-      <CustomButton onClick={null} value={null}>
+      <CustomButton
+        onClick={() => {
+          history.push("/register");
+        }}
+        value={null}
+      >
         Create an Account
       </CustomButton>
     </LoginCard>
