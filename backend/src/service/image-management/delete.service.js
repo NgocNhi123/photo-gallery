@@ -3,7 +3,10 @@ class DeleteService {
     this.imageDaos = imageDaos;
   }
 
-  async execute() {}
+  async execute(id, userId) {
+    const result = await this.imageDaos.delete(id, userId);
+    return result;
+  }
 }
 
 module.exports = DeleteService;

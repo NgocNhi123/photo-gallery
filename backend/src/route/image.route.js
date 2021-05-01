@@ -1,11 +1,24 @@
 const express = require("express");
 
-module.exports = ({ imageController }) => {
+module.exports = ({ imageController, authentication, fileUploader }) => {
   const router = express.Router();
-  router.get("/getAllImgage", imageController.getAll);
-  router.get("/getAllFavorite", imageController.getAllFavorite);
-  router.post("/setFavorite", imageController.setFavorite);
-  router.post("/delete", imageController.delete);
-  router.post("/upload", imageController.upload);
+  router.get("/getAllImgage", authentication.verify, imageController.getAll);
+  router.get(
+    "/getAllFavorite",
+    authentication.verify,
+    imageController.getAllFavorite
+  );
+  router.post(
+    "/setFavorite",
+    authentication.verify,
+    imageController.setFavorite
+  );
+  router.post("/delete", authentication.verify, imageController.delete);
+  router.post(
+    "/upload",
+    authentication.verify,
+    fileUploader.uploadSingle,
+    imageController.upload
+  );
   return router;
 };

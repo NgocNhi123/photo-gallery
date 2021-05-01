@@ -21,12 +21,28 @@ class ImageController {
     this.getAllFavorite = this.getAllFavorite.bind(this);
   }
 
-  async delete(req, res) {}
+  async delete(req, res) {
+    try {
+      const { id } = req.body;
+      const curUser = req.curUser;
+      const result = await this.deleteService.execute(id, curUser._id);
+      if (!result) throw new Error("Delete failed");
+      res.json({ valid: true, message: "delete success" });
+    } catch (err) {
+      res.json({ valid: false, message: err.message });
+    }
+  }
 
   async upload(req, res) {
     try {
       const { file, description } = req.body;
-    } catch (err) {}
+      const curUser = req.curUser;
+      const result = this.uploadService.execute(file, description, curUser._id);
+      if (!result) throw new Error("Upload failed");
+      res.json({ valid: true, message: "Upload success" });
+    } catch (err) {
+      res.json({ valid: false, message: err.message });
+    }
   }
 
   async getAll(req, res) {
@@ -41,8 +57,9 @@ class ImageController {
 
   async setFavorite(req, res) {
     try {
-      const { userId, favorite } = req.body;
-      const result = this.setFavoriteService.execute(userId, favorite);
+      const { id, favorite } = req.body;
+      const curUser = req.curUser;
+      const result = this.setFavoriteService.execute(curUser._id, favorite, id);
       if (!result) throw new Error("set favorite failed");
       res.json({ valid: true, message: "success" });
     } catch (err) {

@@ -3,8 +3,8 @@ class SetFavoriteService {
     this.imageDaos = imageDaos;
   }
 
-  async execute(id, payload) {
-    const updatedOne = this.imageDaos.updateFavorite(id, payload);
+  async execute(userId, payload, id) {
+    const updatedOne = this.imageDaos.updateFavorite(userId, payload, id);
     return updatedOne;
   }
 }

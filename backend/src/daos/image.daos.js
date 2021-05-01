@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+
 class ImageDaos {
   constructor({ imageModel }) {
     this.imageModel = imageModel;
@@ -12,11 +14,12 @@ class ImageDaos {
     }
   }
 
-  async updateFavorite(id, payload) {
+  async updateFavorite(userId, payload, id) {
     try {
-      const updated = await this.imageModel.updateOne(
-        { _id: id },
-        { isFavorite: payload }
+      const updated = await this.imageModel.findOneAndUpdate(
+        { _id: id, userId: mongoose.Types.ObjectId(userId) },
+        { isFavorite: payload },
+        { returnOriginal: false, useFindAndModify: false }
       );
       return updated;
     } catch (err) {
@@ -52,11 +55,15 @@ class ImageDaos {
     }
   }
 
-  async delete(imgId) {
+  async delete(id, userId) {
     try {
-      const img = this.imageModel.findOneAndDelete({ _id: imgId });
-      if (!img) throw new Error("not img found");
-      return img;
+      const updated = await this.imageModel.findOneAndUpdate(
+        { _id: id, userId: mongoose.Types.ObjectId(userId) },
+        { deleteAt: new Date().toString().substring(0, 21) },
+        { returnOriginal: false, useFindAndModify: false }
+      );
+      if (!updated) throw new Error("not img found");
+      return updated;
     } catch (err) {
       console.log(err.message);
       return null;

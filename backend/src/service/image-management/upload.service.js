@@ -14,9 +14,9 @@ class UploadService {
         throw new Error("Invalid file type");
       }
       const filename = new Date().toString() + file.detectedFileExtension;
-      const result = this.imageDaos.createImage(filename, des, userId);
+      const result = await this.imageDaos.createImage(filename, des, userId);
       if (!result) throw new Error("upload image failed");
-      await this.fileUploader.create(filename, file);
+      await this.fileUploader.saveUploadFile(filename, file);
       return file;
     } catch (err) {
       console.log(err.message);
