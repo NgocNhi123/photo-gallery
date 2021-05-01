@@ -16,6 +16,8 @@ class UserController {
         valid: true,
         message: "Login success",
         token: result.token,
+        username: result.username,
+        email: result.email,
       });
     } catch (err) {
       res.json({ valid: false, message: err.message });

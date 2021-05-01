@@ -4,7 +4,7 @@ class ImageDaos {
   }
   async getAll() {
     try {
-      const images = await this.imageModel.find();
+      const images = await this.imageModel.find({ deleteAt: null });
       return images;
     } catch (err) {
       console.log(err.message);
@@ -14,7 +14,10 @@ class ImageDaos {
 
   async updateFavorite(id, payload) {
     try {
-      const updated = await this.imageModel.updateOne({ _id: id }, { isFavorite: payload });
+      const updated = await this.imageModel.updateOne(
+        { _id: id },
+        { isFavorite: payload }
+      );
       return updated;
     } catch (err) {
       console.log(err.message);
@@ -24,7 +27,10 @@ class ImageDaos {
 
   async getAllFavorite() {
     try {
-      const images = await this.imageModel.find({ isFavorite: true });
+      const images = await this.imageModel.find({
+        isFavorite: true,
+        deleteAt: null,
+      });
       return images;
     } catch (err) {
       console.log(err.message);

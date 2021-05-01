@@ -14,6 +14,8 @@ class LoginService {
         const stringUser = JSON.stringify(user);
         return {
           token: this.authentication.sign(stringUser),
+          username: user.username,
+          email: user.email,
         };
       }
     } catch (err) {

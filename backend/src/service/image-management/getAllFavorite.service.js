@@ -4,7 +4,7 @@ class GetAllFavoriteService {
   }
 
   async execute() {
-    const images = this.imageDaos.getAllFavorite({ deleteAt: null });
+    const images = await this.imageDaos.getAllFavorite();
     return { images };
   }
 }

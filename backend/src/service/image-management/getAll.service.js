@@ -4,7 +4,7 @@ class GetAllService {
   }
 
   async execute() {
-    const images = this.imageDaos.getAll({ deleteAt: null });
+    const images = await this.imageDaos.getAll();
     return { images };
   }
 }
