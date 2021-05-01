@@ -22,7 +22,10 @@ const LoginPage = () => {
     if (!data || !data.data || !data.data.valid) {
       setValidation(false);
     } else {
+      setValidation(true);
       localStorage.setItem("auth-token", data.data.token);
+      localStorage.setItem("username", data.data.username);
+      localStorage.setItem("email", data.data.email);
       history.push("/home");
     }
   }

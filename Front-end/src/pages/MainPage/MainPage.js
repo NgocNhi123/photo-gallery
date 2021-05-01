@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./MainPage.css";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ImageGrid from "../../containers/ImageGrid/ImageGrid";
 import Header from "../../containers/Header/Header";
 import SideBar from "../../containers/SideBar/SideBar";
@@ -9,7 +9,7 @@ import ImageCardView from "../../containers/ImageCardView/ImageCardView";
 import CardViewContent from "../../components/CardViewContent/CardViewContent";
 import AddingForm from "../../components/AddingForm/AddingForm";
 import UserInfo from "../../containers/UserInfo/UserInfo";
-// import { GET, POST } from "../src/utils/Fetch";
+import { GET, POST } from "../../utils/Fetch";
 
 const MainPage = () => {
   const [isSelected, setIsSelected] = useState("home");
@@ -21,7 +21,8 @@ const MainPage = () => {
       id: 1,
       url:
         "https://dl.airtable.com/.attachments/6ac7f7b55d505057317534722e5a9f03/9183491e/product-3.jpg",
-      description: "nature",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores tempore quos aliquid dolorum dicta mollitia, nostrum sed ex iste magnam, quod facilis, excepturi pariatur est repellendus? Qui consequatur placeat nisi!",
       datetime: "20/12/2010",
       isFavorite: true,
     },
@@ -29,7 +30,8 @@ const MainPage = () => {
       id: 2,
       url:
         "https://dl.airtable.com/.attachments/6ac7f7b55d505057317534722e5a9f03/9183491e/product-3.jpg",
-      description: "nature",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores tempore quos aliquid dolorum dicta mollitia, nostrum sed ex iste magnam, quod facilis, excepturi pariatur est repellendus? Qui consequatur placeat nisi!",
       datetime: "20/12/2010",
       isFavorite: true,
     },
@@ -37,7 +39,8 @@ const MainPage = () => {
       id: 3,
       url:
         "https://dl.airtable.com/.attachments/6ac7f7b55d505057317534722e5a9f03/9183491e/product-3.jpg",
-      description: "nature",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores tempore quos aliquid dolorum dicta mollitia, nostrum sed ex iste magnam, quod facilis, excepturi pariatur est repellendus? Qui consequatur placeat nisi!",
       datetime: "20/12/2010",
       isFavorite: false,
     },
@@ -45,7 +48,8 @@ const MainPage = () => {
       id: 4,
       url:
         "https://dl.airtable.com/.attachments/6ac7f7b55d505057317534722e5a9f03/9183491e/product-3.jpg",
-      description: "nature",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores tempore quos aliquid dolorum dicta mollitia, nostrum sed ex iste magnam, quod facilis, excepturi pariatur est repellendus? Qui consequatur placeat nisi!",
       datetime: "20/12/2010",
       isFavorite: false,
     },
@@ -69,10 +73,43 @@ const MainPage = () => {
       <SideBar className="side-bar" onClick={setIsSelected} />
       <div style={{ width: "100%" }}>
         <Header />
+        {/* <Router>
+          <Switch>
+            <Route path="/home/user">
+              <>
+                <AddImageBar title={"User Profile"} isProfile={true} />
+                <UserInfo />
+              </>
+            </Route>
+            <Route path="/home/all">
+              <>
+                <AddImageBar title={"All Images"} onClick={setIsAddingImage} />
+                <ImageGrid
+                  onClick={setImageCardViewData}
+                  images={images}
+                  isSelected={isSelected}
+                />
+              </>
+            </Route>
+            <Route path="/home/favorite">
+              <>
+                <AddImageBar
+                  title={"Favorite Images"}
+                  onClick={setIsAddingImage}
+                />
+                <ImageGrid
+                  onClick={setImageCardViewData}
+                  images={images}
+                  isSelected={isSelected}
+                />
+              </>
+            </Route>
+          </Switch>
+        </Router> */}
         {isSelected === "user" && (
           <>
             <AddImageBar title={"User Profile"} isProfile={true} />
-            <UserInfo></UserInfo>
+            <UserInfo />
           </>
         )}
         {isSelected === "home" && (

@@ -20,7 +20,6 @@ const CreateAccountPage = () => {
       `${Commons.DOMAIN}${Commons.PORT}/auth/register`,
       { username, email, password }
     );
-    console.log(data);
     if (!data || !data.data || !data.data.valid) {
       setShowMessage(data.data.message);
     } else {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./UserInfo.css";
 import CustomButton from "../../components/CustomButton/CustomButton";
@@ -7,14 +7,17 @@ import InputBar from "../../components/InputBar/InputBar";
 
 const UserInfo = () => {
   const history = useHistory();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState(localStorage.getItem("username"));
+  const [email, setEmail] = useState(localStorage.getItem("email"));
   const [password, setPassword] = useState("");
-  const [retypePassword, setRetypePassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showMessage, setShowMessage] = useState("");
 
   function changeInformation() {
-    if (retypePassword !== password) setShowMessage("Password doesn't match");
+    if (confirmPassword !== password)
+      setShowMessage("Passwords are not matching");
+    localStorage.setItem("username", username);
+    localStorage.setItem("email", email);
   }
 
   function logOut() {
@@ -25,19 +28,30 @@ const UserInfo = () => {
   return (
     <div className="user-info">
       <LoginCard title={username || "default"}>
-        {showMessage !== "" && <div>{showMessage}</div>}
-        <InputBar type="email" placeholder="Email" onChange={setUsername} />
+        <InputBar
+          type="text"
+          placeholder={username || "Username"}
+          onChange={setUsername}
+        />
+        <InputBar
+          type="email"
+          placeholder={email || "Email"}
+          onChange={setEmail}
+        />
         <InputBar
           type="password"
-          placeholder="Password"
+          placeholder="New Password"
           onChange={setPassword}
         />
         <InputBar
           type="password"
-          placeholder="Retype Password"
-          onChange={setRetypePassword}
+          placeholder="Confirm Password"
+          onChange={setConfirmPassword}
         />
         <br />
+        {showMessage !== "" && (
+          <div style={{ color: "red", fontWeight: "bold" }}>{showMessage}</div>
+        )}
         <CustomButton onClick={changeInformation} value={null}>
           Update Information
         </CustomButton>

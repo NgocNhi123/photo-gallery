@@ -6,11 +6,16 @@
 
 .card-view-body {
   display: flex;
-  align-items: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-.heartIcon {
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-icon {
   color: var(--grey-brown);
   background: white;
   margin: 0;
@@ -19,12 +24,12 @@
   margin-left: auto;
 }
 
-.heartIcon:hover {
+.card-icon:hover {
   font-size: 200%;
   cursor: pointer;
   color: var(--dark-brown);
 }
 
-.isFavorite {
+.is-favorite {
   color: var(--dark-brown);
 }
