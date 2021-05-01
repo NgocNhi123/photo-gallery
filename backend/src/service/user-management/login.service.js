@@ -5,17 +5,21 @@ class LoginService {
   }
 
   async execute(email, password) {
-    let user = await this.userGateway.findByEmail(email);
-    if (
-      user &&
-      (await this.authentication.isMatched(password, user.password))
-    ) {
-      const stringUser = JSON.stringify(user);
-      return {
-        token: this.authentication.sign(stringUser),
-      };
+    try {
+      let user = await this.userDaos.findByEmail(email);
+      if (
+        user &&
+        (await this.authentication.isPasswordMatched(password, user.password))
+      ) {
+        const stringUser = JSON.stringify(user);
+        return {
+          token: this.authentication.sign(stringUser),
+        };
+      }
+    } catch (err) {
+      console.log(err.message);
+      return null;
     }
-    return null;
   }
 }
 
