@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./LoginPage.css";
 import CustomButton from "../../components/CustomButton/CustomButton";
@@ -18,12 +18,19 @@ const LoginPage = () => {
       email,
       password,
     });
+    console.log(data);
     if (!data || !data.data || !data.data.valid) {
       setValidation(false);
     } else {
-      history.push("/");
+      localStorage.setItem("auth-token", data.data.token);
+      history.push("/home");
     }
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem("auth-token");
+    if (token) history.push("/home");
+  }, []);
 
   return (
     <LoginCard title="login">

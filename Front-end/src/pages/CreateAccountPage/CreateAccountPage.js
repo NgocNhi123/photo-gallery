@@ -15,10 +15,12 @@ const CreateAccountPage = () => {
   const [showMessage, setShowMessage] = useState("");
 
   async function checkValidation() {
+    if (username === "" || password === "" || email === "") return;
     let data = await Fetch.POST(
       `${Commons.DOMAIN}${Commons.PORT}/auth/register`,
       { username, email, password }
     );
+    console.log(data);
     if (!data || !data.data || !data.data.valid) {
       setShowMessage(data.data.message);
     } else {
@@ -29,7 +31,7 @@ const CreateAccountPage = () => {
     <LoginCard title="create an account">
       {showMessage !== "" && <div>{showMessage}</div>}
       <InputBar type="text" placeholder="Username" onChange={setUsername} />
-      <InputBar type="email" placeholder="Email" onChange={setUsername} />
+      <InputBar type="email" placeholder="Email" onChange={setEmail} />
       <InputBar type="password" placeholder="Password" onChange={setPassword} />
       <CustomButton onClick={checkValidation} value={null}>
         Create an account
