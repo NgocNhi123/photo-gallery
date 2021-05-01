@@ -9,6 +9,7 @@ class UserController {
       const { email, password } = req.body;
       const result = this.loginService.execute(email, password);
       if (!result) throw new Error("Login failed");
+      if (!result.valid) throw new Error(result.message)
       res.json({
         valid: true,
         message: "Login success",

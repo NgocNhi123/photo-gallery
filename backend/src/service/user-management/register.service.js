@@ -6,9 +6,9 @@ class RegisterService {
 
   async execute(username, email, password) {
     const checkEmail = this.userDaos.findByEmail(email);
-    if (checkEmail) return { valid: false, message: "email" };
+    if (checkEmail) return { valid: false, message: "This email has been used" };
     const checkName = this.userDaos.findByUsername(username);
-    if (checkName) return { valid: false, message: "username" };
+    if (checkName) return { valid: false, message: "This username has been used" };
     const hashedPassword = await this.passwordHasher.hash(password);
     const newUser = this.userDaos.createNewUser(
       username,
