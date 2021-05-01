@@ -22,6 +22,9 @@ const setFavoriteService = require("./service/image-management/setFavorite.servi
 // ulti
 const authentication = require("./ulti/authentication");
 const passwordHasher = require("./ulti/passwordHasher");
+// router
+const userRouter = require("./route/user.route.js");
+const imageRouter = require("./route/image.route.js");
 
 const Container = awilix.createContainer();
 
@@ -49,6 +52,9 @@ Container.register({
   // ulti
   authentication: awilix.asClass(authentication),
   passwordHasher: awilix.asClass(passwordHasher),
+  // router
+  userRouter: awilix.asFunction(userRouter),
+  imageRouter: awilix.asFunction(userRouter),
 });
 
 module.exports = Container;
