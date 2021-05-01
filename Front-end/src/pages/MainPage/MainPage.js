@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./MainPage.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ImageGrid from "../../containers/ImageGrid/ImageGrid";
 import Header from "../../containers/Header/Header";
 import SideBar from "../../containers/SideBar/SideBar";
@@ -56,6 +55,7 @@ const MainPage = () => {
   ];
   return (
     <div className="container">
+      {/* view an image's details */}
       {imageCardViewData && (
         <div className="pop-up">
           <ImageCardView onClick={setImageCardViewData}>
@@ -63,6 +63,8 @@ const MainPage = () => {
           </ImageCardView>
         </div>
       )}
+
+      {/* add a new image */}
       {isAddingImage && (
         <div className="pop-up">
           <ImageCardView onClick={setIsAddingImage}>
@@ -70,42 +72,15 @@ const MainPage = () => {
           </ImageCardView>
         </div>
       )}
+
+      {/* side bar */}
       <SideBar className="side-bar" onClick={setIsSelected} />
+
       <div style={{ width: "100%" }}>
+        {/* breadcrums and button add */}
         <Header />
-        {/* <Router>
-          <Switch>
-            <Route path="/home/user">
-              <>
-                <AddImageBar title={"User Profile"} isProfile={true} />
-                <UserInfo />
-              </>
-            </Route>
-            <Route path="/home/all">
-              <>
-                <AddImageBar title={"All Images"} onClick={setIsAddingImage} />
-                <ImageGrid
-                  onClick={setImageCardViewData}
-                  images={images}
-                  isSelected={isSelected}
-                />
-              </>
-            </Route>
-            <Route path="/home/favorite">
-              <>
-                <AddImageBar
-                  title={"Favorite Images"}
-                  onClick={setIsAddingImage}
-                />
-                <ImageGrid
-                  onClick={setImageCardViewData}
-                  images={images}
-                  isSelected={isSelected}
-                />
-              </>
-            </Route>
-          </Switch>
-        </Router> */}
+
+        {/* main body */}
         {isSelected === "user" && (
           <>
             <AddImageBar title={"User Profile"} isProfile={true} />
