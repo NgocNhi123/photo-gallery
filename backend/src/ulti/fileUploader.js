@@ -1,10 +1,10 @@
 const multer = require("multer");
 
-module.export = class FileUploader {
+module.exports = class FileUploader {
   constructor() {
     this.upload = multer();
-  };
+  }
   uploadSinge() {
     return this.upload.single();
   }
-}
+};

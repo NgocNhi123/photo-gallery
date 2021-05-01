@@ -6,7 +6,7 @@ module.exports = class Authentication {
     this.passwordHasher = passwordHasher;
     this.sign = this.sign.bind(this);
     this.verify = this.verify.bind(this);
-    this.isMatched = this.isMatched.bind(this);
+    this.isPasswordMatched = this.isPasswordMatched.bind(this);
   }
 
   sign(payload) {
