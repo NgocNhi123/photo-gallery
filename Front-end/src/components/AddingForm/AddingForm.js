@@ -14,11 +14,14 @@ const AddingForm = ({ onClick }) => {
   const [description, setDescription] = useState("");
 
   async function onSubmit() {
-    let data = await Fetch.POST(`${Commons.DOMAIN}${Commons.PORT}/upload`, {
-      file,
-      description,
-    });
-    if (data.data.valid) onClick(false);
+    const data = new FormData();
+    data.append("file", file);
+    data.append("des", description);
+    let fetchData = await Fetch.POST(
+      `${Commons.DOMAIN}${Commons.PORT}/upload`,
+      data
+    );
+    if (fetchData.data.valid) onClick(false);
   }
 
   function imageHandler(e) {
