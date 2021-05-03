@@ -39,7 +39,7 @@ const fakeUserData = async (password) => {
 
 const fakeImageData = async () => {
   try {
-    const testUser = await User.findOne({ username: "test" });
+    const testUser = await User.findOne({ username: "123" });
     if (!testUser) {
       console.log("cant find test user");
       return;

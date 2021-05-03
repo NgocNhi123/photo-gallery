@@ -14,6 +14,7 @@ const AddingForm = ({ onClick }) => {
   const [description, setDescription] = useState("");
 
   async function onSubmit() {
+    console.log(file);
     const data = new FormData();
     data.append("des", description);
     data.append("file", file);
@@ -40,7 +41,7 @@ const AddingForm = ({ onClick }) => {
       <img src={image} alt="" className="resize-card" />
       <input
         type="file"
-        accept="image/*"
+        accept=".jpg"
         name="image-upload"
         id="input"
         onChange={imageHandler}
