@@ -2,7 +2,7 @@ const express = require("express");
 
 module.exports = ({ imageController, authentication, fileUploader }) => {
   const router = express.Router();
-  router.get("/getAllImgage", authentication.verify, imageController.getAll);
+  router.get("/getAllImage", authentication.verify, imageController.getAll);
   router.get(
     "/getAllFavorite",
     authentication.verify,
