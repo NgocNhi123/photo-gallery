@@ -27,17 +27,8 @@ const UserInfo = () => {
 
   return (
     <div className="user-info">
-      <LoginCard title={username || "default"}>
-        <InputBar
-          type="text"
-          placeholder={username || "Username"}
-          onChange={setUsername}
-        />
-        <InputBar
-          type="email"
-          placeholder={email || "Email"}
-          onChange={setEmail}
-        />
+      <LoginCard title={username}>
+        <h4>{email}</h4>
         <InputBar
           type="password"
           placeholder="New Password"

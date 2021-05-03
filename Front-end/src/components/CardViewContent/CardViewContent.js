@@ -3,14 +3,26 @@ import "./CardViewContent.css";
 import { Icon } from "@iconify/react";
 import heartFilled from "@iconify-icons/ant-design/heart-filled";
 import bxTrash from "@iconify-icons/bx/bx-trash";
+import * as Commons from "../../commons/commons";
 
-const CardViewContent = ({ url, description, isFavorite, datetime }) => {
+const CardViewContent = ({
+  _id,
+  path,
+  caption,
+  isFavorite,
+  date,
+  deleteAt,
+}) => {
   return (
     <div>
-      <img src={url} alt="" className="resize-card" />
+      <img
+        src={`${Commons.DOMAIN}${Commons.PORT}${path}`}
+        alt={_id}
+        className="resize-card"
+      />
       <div className="card-view-body">
         <div className="row">
-          <div>{datetime}</div>
+          <div>{date}</div>
           <div
             className={isFavorite ? "card-icon is-favorite" : "card-icon"}
             onClick={null}
@@ -19,7 +31,7 @@ const CardViewContent = ({ url, description, isFavorite, datetime }) => {
           </div>
         </div>
         <div className="row">
-          <div>{description}</div>
+          <div>{caption}</div>
           <div className={"card-icon is-favorite"} onClick={null}>
             <Icon icon={bxTrash} />
           </div>

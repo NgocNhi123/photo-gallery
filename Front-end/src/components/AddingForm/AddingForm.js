@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./AddingForm.css";
 import CustomButton from "../CustomButton/CustomButton";
+import * as Commons from "../../commons/commons";
+import * as Fetch from "../../utils/Fetch";
 
-const AddingForm = () => {
+const AddingForm = ({ onClick }) => {
   const [image, setImage] = useState(
     "https://dl.airtable.com/.attachments/6ac7f7b55d505057317534722e5a9f03/9183491e/product-3.jpg"
   );
@@ -11,8 +13,13 @@ const AddingForm = () => {
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
 
-  function onSubmit() {
-    const newImage = { file, description };
+  async function onSubmit() {
+    let data = await Fetch.POST(`${Commons.DOMAIN}${Commons.PORT}/upload`, {
+      file,
+      description,
+    });
+    console.log(data);
+    if (data.data.valid) onClick(false);
   }
 
   function imageHandler(e) {
