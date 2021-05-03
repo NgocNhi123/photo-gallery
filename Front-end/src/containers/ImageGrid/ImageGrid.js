@@ -23,7 +23,8 @@ const ImageGrid = ({ onClick, isSelected }) => {
     }
 
     fetchData();
-  });
+    console.log("chay lai ne");
+  }, [isSelected]);
 
   return (
     <div className="grid-container">

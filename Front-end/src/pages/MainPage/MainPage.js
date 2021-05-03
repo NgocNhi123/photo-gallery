@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MainPage.css";
 import ImageGrid from "../../containers/ImageGrid/ImageGrid";
 import Header from "../../containers/Header/Header";
@@ -14,13 +14,20 @@ const MainPage = () => {
   const [imageCardViewData, setImageCardViewData] = useState();
   const [isAddingImage, setIsAddingImage] = useState(false);
 
+  useEffect(() => {
+    console.log(imageCardViewData);
+  });
+
   return (
     <div className="container">
       {/* view an image's details */}
       {imageCardViewData && (
         <div className="pop-up">
           <ImageCardView onClick={setImageCardViewData}>
-            <CardViewContent {...imageCardViewData} />
+            <CardViewContent
+              {...imageCardViewData}
+              onClick={setImageCardViewData}
+            />
           </ImageCardView>
         </div>
       )}

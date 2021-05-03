@@ -24,12 +24,6 @@
   margin-left: auto;
 }
 
-.card-icon:hover {
-  font-size: 200%;
-  cursor: pointer;
-  color: var(--dark-brown);
-}
-
 .is-favorite {
   color: var(--dark-brown);
 }

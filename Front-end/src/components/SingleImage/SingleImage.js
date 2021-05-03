@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./SingleImage.css";
 import { Icon } from "@iconify/react";
 import heartFilled from "@iconify-icons/ant-design/heart-filled";
+import bxTrash from "@iconify-icons/bx/bx-trash";
 import * as Commons from "../../commons/commons";
 import * as Fetch from "../../utils/Fetch";
 
@@ -9,7 +10,6 @@ const SingleImage = ({ _id, path, date, isFavorite, caption, onClick }) => {
   const [favorite, setFavorite] = useState(isFavorite);
 
   async function setIsFavorite() {
-    console.log(typeof _id);
     let data = await Fetch.POST(
       `${Commons.DOMAIN}${Commons.PORT}/setFavorite`,
       {
@@ -17,9 +17,16 @@ const SingleImage = ({ _id, path, date, isFavorite, caption, onClick }) => {
         favorite: !favorite,
       }
     );
-    console.log(data);
     if (data.data.valid) setFavorite((prev) => !prev);
   }
+
+  async function deleteImage() {
+    let data = await Fetch.POST(`${Commons.DOMAIN}${Commons.PORT}/delete`, {
+      id: _id,
+    });
+    console.log(data);
+  }
+
   return (
     <article className="image-card">
       <img
@@ -29,12 +36,14 @@ const SingleImage = ({ _id, path, date, isFavorite, caption, onClick }) => {
         onClick={() => onClick({ _id, path, date, isFavorite, caption })}
       />
       <div className="card-body">
-        {date}
         <div onClick={setIsFavorite}>
           <Icon
             icon={heartFilled}
             className={favorite ? "heart-icon isFavo" : "heart-icon"}
           />
+        </div>
+        <div onClick={deleteImage}>
+          <Icon icon={bxTrash} className={"heart-icon"} />
         </div>
       </div>
     </article>
