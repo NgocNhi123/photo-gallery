@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./UserInfo.css";
 import CustomButton from "../../components/CustomButton/CustomButton";
@@ -7,8 +7,8 @@ import InputBar from "../../components/InputBar/InputBar";
 
 const UserInfo = () => {
   const history = useHistory();
-  const [username, setUsername] = useState(localStorage.getItem("username"));
-  const [email, setEmail] = useState(localStorage.getItem("email"));
+  const username = localStorage.getItem("username");
+  const email = localStorage.getItem("email");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showMessage, setShowMessage] = useState("");

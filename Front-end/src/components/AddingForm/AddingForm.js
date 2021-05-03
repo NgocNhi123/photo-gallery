@@ -16,17 +16,16 @@ const AddingForm = ({ onClick }) => {
   async function onSubmit() {
     console.log(file);
     const data = new FormData();
-    data.append("des", description);
     data.append("file", file);
-    let result = await Fetch.POST(
+    data.append("des", description);
+    let fetchData = await Fetch.POST(
       `${Commons.DOMAIN}${Commons.PORT}/upload`,
       data
     );
-    if (result.data.valid) onClick(false);
+    if (fetchData.data.valid) onClick(false);
   }
 
   function imageHandler(e) {
-    setFile(e.target.files[0]);
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === reader.DONE) {
@@ -34,6 +33,7 @@ const AddingForm = ({ onClick }) => {
       }
     };
     reader.readAsDataURL(e.target.files[0]);
+    setFile(e.target.files[0]);
   }
 
   return (
