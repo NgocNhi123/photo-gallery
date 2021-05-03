@@ -7,29 +7,35 @@ import * as Commons from "../../commons/commons";
 const ImageGrid = ({ onClick, isSelected }) => {
   const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      if (isSelected === "home") {
-        let data = await Fetch.GET(
-          `${Commons.DOMAIN}${Commons.PORT}/getAllImage`
-        );
-        setImages(data.data.images);
-      } else if (isSelected === "favorite") {
-        let data = await Fetch.GET(
-          `${Commons.DOMAIN}${Commons.PORT}/getAllFavorite`
-        );
-        setImages(data.data.images);
-      }
+  async function fetchData() {
+    if (isSelected === "home") {
+      let data = await Fetch.GET(
+        `${Commons.DOMAIN}${Commons.PORT}/getAllImage`
+      );
+      setImages(data.data.images);
+    } else if (isSelected === "favorite") {
+      let data = await Fetch.GET(
+        `${Commons.DOMAIN}${Commons.PORT}/getAllFavorite`
+      );
+      setImages(data.data.images);
     }
+  }
 
+  useEffect(() => {
     fetchData();
-    console.log("chay lai ne");
   }, [isSelected]);
 
   return (
     <div className="grid-container">
       {images.map((image) => {
-        return <SingleImage key={image._id} {...image} onClick={onClick} />;
+        return (
+          <SingleImage
+            key={image._id}
+            {...image}
+            onClick={onClick}
+            fetchData={fetchData}
+          />
+        );
       })}
     </div>
   );

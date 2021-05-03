@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./MainPage.css";
 import ImageGrid from "../../containers/ImageGrid/ImageGrid";
 import Header from "../../containers/Header/Header";
@@ -13,10 +13,6 @@ const MainPage = () => {
   const [isSelected, setIsSelected] = useState("home");
   const [imageCardViewData, setImageCardViewData] = useState();
   const [isAddingImage, setIsAddingImage] = useState(false);
-
-  useEffect(() => {
-    console.log(imageCardViewData);
-  });
 
   return (
     <div className="container">
