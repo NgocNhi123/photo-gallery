@@ -7,7 +7,7 @@ class ImageDaos {
   async getAll(userId) {
     try {
       const images = await this.imageModel.find({
-        deleteAt: null,
+        deletedAt: null,
         userId: userId,
       });
       return images;
@@ -38,7 +38,7 @@ class ImageDaos {
     try {
       const images = await this.imageModel.find({
         isFavorite: true,
-        deleteAt: null,
+        deletedAt: null,
         userId: userId,
       });
       return images;
@@ -69,9 +69,10 @@ class ImageDaos {
           _id: mongoose.Types.ObjectId(id),
           userId: mongoose.Types.ObjectId(userId),
         },
-        { deleteAt: new Date().toString().substring(0, 21) },
+        { deletedAt: new Date().toString().substring(0, 21) },
         { returnOriginal: false, useFindAndModify: false }
       );
+      console.log(updated);
       if (!updated) throw new Error("not img found");
       return updated;
     } catch (err) {
