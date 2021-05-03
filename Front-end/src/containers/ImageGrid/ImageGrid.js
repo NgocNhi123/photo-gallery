@@ -4,7 +4,7 @@ import "./ImageGrid.css";
 import * as Fetch from "../../utils/Fetch";
 import * as Commons from "../../commons/commons";
 
-const ImageGrid = ({ onClick, isSelected }) => {
+const ImageGrid = ({ onClick, isSelected, searchKeywords }) => {
   const [images, setImages] = useState([]);
 
   async function fetchData() {
@@ -28,14 +28,15 @@ const ImageGrid = ({ onClick, isSelected }) => {
   return (
     <div className="grid-container">
       {images.map((image) => {
-        return (
-          <SingleImage
-            key={image._id}
-            {...image}
-            onClick={onClick}
-            fetchData={fetchData}
-          />
-        );
+        if (image.caption.includes(searchKeywords))
+          return (
+            <SingleImage
+              key={image._id}
+              {...image}
+              onClick={onClick}
+              fetchData={fetchData}
+            />
+          );
       })}
     </div>
   );

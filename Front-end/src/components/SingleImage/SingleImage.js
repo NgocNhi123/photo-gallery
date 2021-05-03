@@ -25,7 +25,10 @@ const SingleImage = ({
         favorite: !favorite,
       }
     );
-    if (data.data.valid) setFavorite((prev) => !prev);
+    if (data.data.valid) {
+      setFavorite((prev) => !prev);
+      fetchData();
+    }
   }
 
   async function deleteImage() {

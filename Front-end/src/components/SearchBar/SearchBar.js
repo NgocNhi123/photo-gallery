@@ -1,10 +1,17 @@
 import React from "react";
 import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = ({ onChange }) => {
   return (
     <form action="">
-      <input type="text" placeholder="Search" className="search-input" />
+      <input
+        type="text"
+        placeholder="Search by description"
+        className="search-input"
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
+      />
     </form>
   );
 };

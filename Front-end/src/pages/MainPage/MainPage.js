@@ -13,6 +13,7 @@ const MainPage = () => {
   const [isSelected, setIsSelected] = useState("home");
   const [imageCardViewData, setImageCardViewData] = useState();
   const [isAddingImage, setIsAddingImage] = useState(false);
+  const [searchKeywords, setSearchKeywords] = useState("");
 
   return (
     <div className="container">
@@ -42,7 +43,7 @@ const MainPage = () => {
 
       <div style={{ width: "100%" }}>
         {/* breadcrums and button add */}
-        <Header />
+        <Header onChange={setSearchKeywords} />
 
         {/* main body */}
         {isSelected === "user" && (
@@ -54,13 +55,21 @@ const MainPage = () => {
         {isSelected === "home" && (
           <div>
             <AddImageBar title={"All Images"} onClick={setIsAddingImage} />
-            <ImageGrid onClick={setImageCardViewData} isSelected={isSelected} />
+            <ImageGrid
+              onClick={setImageCardViewData}
+              isSelected={isSelected}
+              searchKeywords={searchKeywords}
+            />
           </div>
         )}
         {isSelected === "favorite" && (
           <div>
-            <AddImageBar title={"Favorite Images"} onClick={setIsAddingImage} />
-            <ImageGrid onClick={setImageCardViewData} isSelected={isSelected} />
+            <AddImageBar title={"Favorite Images"} isProfile={true} />
+            <ImageGrid
+              onClick={setImageCardViewData}
+              isSelected={isSelected}
+              searchKeywords={searchKeywords}
+            />
           </div>
         )}
       </div>
