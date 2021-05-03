@@ -18,7 +18,6 @@ const AddingForm = ({ onClick }) => {
       file,
       description,
     });
-    console.log(data);
     if (data.data.valid) onClick(false);
   }
 
