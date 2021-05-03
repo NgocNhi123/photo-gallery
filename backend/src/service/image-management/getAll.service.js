@@ -3,8 +3,8 @@ class GetAllService {
     this.imageDaos = imageDaos;
   }
 
-  async execute() {
-    const images = await this.imageDaos.getAll();
+  async execute(userId) {
+    const images = await this.imageDaos.getAll(userId);
     return { images };
   }
 }

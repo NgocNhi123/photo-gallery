@@ -4,9 +4,12 @@ class ImageDaos {
   constructor({ imageModel }) {
     this.imageModel = imageModel;
   }
-  async getAll() {
+  async getAll(userId) {
     try {
-      const images = await this.imageModel.find({ deleteAt: null });
+      const images = await this.imageModel.find({
+        deleteAt: null,
+        userId: userId,
+      });
       return images;
     } catch (err) {
       console.log(err.message);
@@ -17,7 +20,10 @@ class ImageDaos {
   async updateFavorite(userId, payload, id) {
     try {
       const updated = await this.imageModel.findOneAndUpdate(
-        { _id: id, userId: mongoose.Types.ObjectId(userId) },
+        {
+          _id: mongoose.Types.ObjectId(id),
+          userId: mongoose.Types.ObjectId(userId),
+        },
         { isFavorite: payload },
         { returnOriginal: false, useFindAndModify: false }
       );
@@ -28,11 +34,12 @@ class ImageDaos {
     }
   }
 
-  async getAllFavorite() {
+  async getAllFavorite(userId) {
     try {
       const images = await this.imageModel.find({
         isFavorite: true,
         deleteAt: null,
+        userId: userId,
       });
       return images;
     } catch (err) {

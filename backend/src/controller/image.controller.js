@@ -47,7 +47,8 @@ class ImageController {
 
   async getAll(req, res) {
     try {
-      const result = await this.getAllService.execute();
+      const curUser = req.curUser;
+      const result = await this.getAllService.execute(curUser._id);
       if (!result) throw new Error("Fetch data failed");
       res.json({ valid: true, message: "Success", images: result.images });
     } catch (err) {
@@ -69,7 +70,8 @@ class ImageController {
 
   async getAllFavorite(req, res) {
     try {
-      const result = await this.getAllFavoriteService.execute();
+      const curUser = req.curUser;
+      const result = await this.getAllFavoriteService.execute(curUser._id);
       if (!result) throw new Error("Fetch data failed");
       res.json({ valid: true, message: "Success", images: result.images });
     } catch (err) {

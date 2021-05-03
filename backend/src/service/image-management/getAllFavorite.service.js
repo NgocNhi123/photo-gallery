@@ -3,8 +3,8 @@ class GetAllFavoriteService {
     this.imageDaos = imageDaos;
   }
 
-  async execute() {
-    const images = await this.imageDaos.getAllFavorite();
+  async execute(userId) {
+    const images = await this.imageDaos.getAllFavorite(userId);
     return { images };
   }
 }
