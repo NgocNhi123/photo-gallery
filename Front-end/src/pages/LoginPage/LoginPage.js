@@ -33,7 +33,7 @@ const LoginPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("auth-token");
     if (token) history.push("/home");
-  }, []);
+  });
 
   return (
     <LoginCard title="login">

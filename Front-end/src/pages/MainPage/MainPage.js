@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./MainPage.css";
 import ImageGrid from "../../containers/ImageGrid/ImageGrid";
 import Header from "../../containers/Header/Header";

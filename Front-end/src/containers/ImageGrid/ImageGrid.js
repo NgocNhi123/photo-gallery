@@ -23,7 +23,7 @@ const ImageGrid = ({ onClick, isSelected }) => {
     }
 
     fetchData();
-  }, []);
+  });
 
   return (
     <div className="grid-container">
