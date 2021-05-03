@@ -1,5 +1,5 @@
 class UserController {
-  constructor({ loginService, registerService }) {
+  constructor({ loginService, registerService, updatePasswordService }) {
     this.loginService = loginService;
     this.registerService = registerService;
 
@@ -43,6 +43,18 @@ class UserController {
         valid: false,
         message: err.message,
       });
+    }
+  }
+
+  async updatePassword(req, res) {
+    try {
+      const { newPass } = req.body;
+      const curUser = req.curUser;
+      const result = await this.updatePassword.execute(curUser._id, newPass);
+      if (!result) throw new Error("update password failed");
+      res.json({ valid: true, message: "Success" });
+    } catch (err) {
+      res.json({ valid: false, message: err.message });
     }
   }
 }

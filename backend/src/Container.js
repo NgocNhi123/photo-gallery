@@ -21,6 +21,7 @@ const getAllService = require("./service/image-management/getAll.service");
 const setFavoriteService = require("./service/image-management/setFavorite.service");
 const getAllFavoriteService = require("./service/image-management/getAllFavorite.service");
 const uploadService = require("./service/image-management/upload.service");
+const updatePasswordService = require("./service/user-management/updatePassword.service");
 // ulti
 const authentication = require("./ulti/authentication");
 const passwordHasher = require("./ulti/passwordHasher");
@@ -54,6 +55,7 @@ Container.register({
   setFavoriteService: awilix.asClass(setFavoriteService),
   getAllFavoriteService: awilix.asClass(getAllFavoriteService),
   uploadService: awilix.asClass(uploadService),
+  updatePasswordService: awilix.asClass(updatePasswordService),
   // ulti
   authentication: awilix.asClass(authentication),
   passwordHasher: awilix.asClass(passwordHasher),

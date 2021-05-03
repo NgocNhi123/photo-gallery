@@ -36,6 +36,23 @@ class UserDaos {
       return null;
     }
   }
+
+  async updatePassword(userId, newPass) {
+    try {
+      const updated = await this.userModel.findOneAndUpdate(
+        {
+          _id: mongoose.Types.ObjectId(userId),
+        },
+        { password: newPass },
+        { returnOriginal: false, useFindAndModify: false }
+      );
+      if (!update) throw new Error("data not found");
+      return updated;
+    } catch (err) {
+      console.log(err.message);
+      return null;
+    }
+  }
 }
 
 module.exports = UserDaos;
