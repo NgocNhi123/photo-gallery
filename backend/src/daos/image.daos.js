@@ -65,7 +65,10 @@ class ImageDaos {
   async delete(id, userId) {
     try {
       const updated = await this.imageModel.findOneAndUpdate(
-        { _id: id, userId: mongoose.Types.ObjectId(userId) },
+        {
+          _id: mongoose.Types.ObjectId(id),
+          userId: mongoose.Types.ObjectId(userId),
+        },
         { deleteAt: new Date().toString().substring(0, 21) },
         { returnOriginal: false, useFindAndModify: false }
       );
