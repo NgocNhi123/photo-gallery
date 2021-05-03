@@ -1,4 +1,6 @@
 const express = require("express");
+const multer = require("multer");
+const upload = multer();
 
 module.exports = ({ imageController, authentication, fileUploader }) => {
   const router = express.Router();
@@ -17,7 +19,7 @@ module.exports = ({ imageController, authentication, fileUploader }) => {
   router.post(
     "/upload",
     authentication.verify,
-    fileUploader.uploadSingle,
+    upload.single("file"),
     imageController.upload
   );
   return router;

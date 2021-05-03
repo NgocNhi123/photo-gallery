@@ -35,10 +35,11 @@ class ImageController {
 
   async upload(req, res) {
     try {
-      const { file, description } = req.body;
+      const { des } = req.body;
+      const file = req.file;
+      console.log(req.file);
       const curUser = req.curUser;
-      console.log(curUser);
-      const result = this.uploadService.execute(file, description, curUser._id);
+      const result = this.uploadService.execute(file, des, curUser._id);
       if (!result) throw new Error("Upload failed");
       res.json({ valid: true, message: "Upload success" });
     } catch (err) {
