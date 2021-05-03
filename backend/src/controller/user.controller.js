@@ -2,6 +2,7 @@ class UserController {
   constructor({ loginService, registerService, updatePasswordService }) {
     this.loginService = loginService;
     this.registerService = registerService;
+    this.updatePasswordService = updatePasswordService;
 
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
@@ -48,6 +49,7 @@ class UserController {
 
   async updatePassword(req, res) {
     try {
+      console.log("vo day roi");
       const { newPass } = req.body;
       const curUser = req.curUser;
       const result = await this.updatePassword.execute(curUser._id, newPass);

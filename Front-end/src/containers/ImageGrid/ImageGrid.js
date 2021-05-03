@@ -37,6 +37,7 @@ const ImageGrid = ({ onClick, isSelected, searchKeywords }) => {
               fetchData={fetchData}
             />
           );
+        else return <></>;
       })}
     </div>
   );
