@@ -46,7 +46,7 @@ class UserDaos {
         { password: newPass },
         { returnOriginal: false, useFindAndModify: false }
       );
-      if (!update) throw new Error("data not found");
+      if (!updated) throw new Error("data not found");
       return updated;
     } catch (err) {
       console.log(err.message);

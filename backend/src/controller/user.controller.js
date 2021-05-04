@@ -6,6 +6,7 @@ class UserController {
 
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
+    this.updatePassword = this.updatePassword.bind(this);
   }
 
   async login(req, res) {
@@ -49,10 +50,12 @@ class UserController {
 
   async updatePassword(req, res) {
     try {
-      console.log("vo day roi");
       const { newPass } = req.body;
       const curUser = req.curUser;
-      const result = await this.updatePassword.execute(curUser._id, newPass);
+      const result = await this.updatePasswordService.execute(
+        curUser._id,
+        newPass
+      );
       if (!result) throw new Error("update password failed");
       res.json({ valid: true, message: "Success" });
     } catch (err) {
