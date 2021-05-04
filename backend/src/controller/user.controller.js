@@ -48,6 +48,7 @@ class UserController {
 
   async updatePassword(req, res) {
     try {
+      console.log("vo day roi");
       const { newPass } = req.body;
       const curUser = req.curUser;
       const result = await this.updatePassword.execute(curUser._id, newPass);
