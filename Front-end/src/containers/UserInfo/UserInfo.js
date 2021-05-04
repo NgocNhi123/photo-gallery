@@ -4,6 +4,8 @@ import "./UserInfo.css";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import LoginCard from "../../containers/LoginCard/LoginCard";
 import InputBar from "../../components/InputBar/InputBar";
+import * as Fetch from "../../utils/Fetch";
+import * as Commons from "../../commons/commons";
 
 const UserInfo = () => {
   const history = useHistory();
@@ -13,11 +15,18 @@ const UserInfo = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showMessage, setShowMessage] = useState("");
 
-  function changeInformation() {
+  async function changeInformation() {
     if (confirmPassword !== password)
       setShowMessage("Passwords are not matching");
-    localStorage.setItem("username", username);
-    localStorage.setItem("email", email);
+    else {
+      const data = await Fetch.POST(
+        `${Commons.DOMAIN}${Commons.PORT}/auth/updatePassword`,
+        { newPass: password }
+      );
+      if (data.data.valid) setShowMessage(data.data.message);
+      else setShowMessage("Something went wrong, Please try again later");
+      console.log(data);
+    }
   }
 
   function logOut() {
@@ -41,7 +50,11 @@ const UserInfo = () => {
         />
         <br />
         {showMessage !== "" && (
-          <div style={{ color: "red", fontWeight: "bold" }}>{showMessage}</div>
+          <div
+            style={{ color: "red", fontWeight: "bold", textAlign: "center" }}
+          >
+            {showMessage}
+          </div>
         )}
         <CustomButton onClick={changeInformation} value={null}>
           Update Information

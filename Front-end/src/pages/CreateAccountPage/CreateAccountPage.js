@@ -28,7 +28,9 @@ const CreateAccountPage = () => {
   }
   return (
     <LoginCard title="create an account">
-      {showMessage !== "" && <div>{showMessage}</div>}
+      {showMessage !== "" && (
+        <div style={{ color: "red", fontWeight: "bold" }}>{showMessage}</div>
+      )}
       <InputBar type="text" placeholder="Username" onChange={setUsername} />
       <InputBar type="email" placeholder="Email" onChange={setEmail} />
       <InputBar type="password" placeholder="Password" onChange={setPassword} />

@@ -2,6 +2,7 @@ class UserController {
   constructor({ loginService, registerService, updatePasswordService }) {
     this.loginService = loginService;
     this.registerService = registerService;
+    this.updatePasswordService = updatePasswordService;
 
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);

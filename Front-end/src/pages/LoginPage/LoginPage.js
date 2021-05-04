@@ -18,7 +18,6 @@ const LoginPage = () => {
       email,
       password,
     });
-    console.log(data);
     if (!data || !data.data || !data.data.valid) {
       setValidation(false);
     } else {
@@ -39,7 +38,9 @@ const LoginPage = () => {
     <LoginCard title="login">
       <InputBar type="email" placeholder="Email" onChange={setEmail} />
       <InputBar type="password" placeholder="Password" onChange={setPassword} />
-      {!validation && <div>Invalid login</div>}
+      {!validation && (
+        <div style={{ color: "red", fontWeight: "bold" }}>Invalid login</div>
+      )}
       <CustomButton onClick={checkValidation} value={null}>
         Login
       </CustomButton>

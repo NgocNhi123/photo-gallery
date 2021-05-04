@@ -2,6 +2,8 @@ class UpdatePasswordService {
   constructor({ userDaos, passwordHasher }) {
     this.userDaos = userDaos;
     this.passwordHasher = passwordHasher;
+
+    this.execute = this.execute.bind(this);
   }
 
   async execute(userId, newPass) {
