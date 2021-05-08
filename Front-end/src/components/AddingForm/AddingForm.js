@@ -14,7 +14,6 @@ const AddingForm = ({ onClick }) => {
   const [description, setDescription] = useState("");
 
   async function onSubmit() {
-    console.log(file);
     const data = new FormData();
     data.append("file", file);
     data.append("des", description);
@@ -42,11 +41,11 @@ const AddingForm = ({ onClick }) => {
       <input
         type="file"
         accept=".jpg"
-        name="image-upload"
-        id="input"
+        name="file"
+        id="file"
         onChange={imageHandler}
       />
-      <label htmlFor="input">
+      <label htmlFor="file">
         <CustomButton onClick={null} value={null}>
           Choose your image
         </CustomButton>

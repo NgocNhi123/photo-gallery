@@ -55,6 +55,7 @@ class ImageDaos {
         userId: userId,
         caption: des,
       });
+      console.log(newImg);
       return newImg;
     } catch (err) {
       console.log(err.message);

@@ -4,17 +4,9 @@ class UploadService {
     this.fileUploader = fileUploader;
   }
 
-  async execute(file, des, userId) {
+  async execute(filename, des, userId) {
     try {
-      if (
-        file.detectedFileExtension != ".jpg" &&
-        file.detectedFileExtension != ".jpeg" &&
-        file.detectedFileExtension != ".png"
-      ) {
-        throw new Error("Invalid file type");
-      }
-      const filename = new Date().toString() + file.detectedFileExtension;
-      const result = await this.imageDaos.createImage(filename, des, userId);
+      const result = await this.imageDaos.create(filename, des, userId);
       if (!result) throw new Error("upload image failed");
       await this.fileUploader.saveUploadFile(filename, file);
       return file;
